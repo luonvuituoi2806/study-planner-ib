@@ -46,12 +46,12 @@ jobs:
           fetch-depth: 0
       - name: Generate Changelog
         id: changelog
-        uses: Jay-Khuu/conventional-changelog-action@v1.1.0
+        uses: TriPSs/conventional-changelog-action@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          git-branch: 'main'
           skip-version-file: 'false'
           skip-commit: 'false'
-          git-branch: 'main'
       - name: Create Release
         uses: softprops/action-gh-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}
